@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const baseUrl = 'https://api.riigikogu.ee/';
+const baseUrl = 'https://api.riigikogu.ee';
 
 const getData = async (resource) => {
   try {

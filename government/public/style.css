@@ -2,37 +2,44 @@ body {
   margin: 0;
   padding: 0;
   background-color: #dde1e7;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 nav {
   width: 100%;
-  height: 10%;
+  min-height: 60px;
   background-color: #0033a0;
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
 .logo {
   background-color: #1A4DBA;
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .navList {
-  width: 50%;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .navListElement {
-  font-size: 3vw;
+  font-size: clamp(14px, 2.5vw, 18px);
   color: white;
   text-decoration: none;
+  padding: 5px 10px;
+  white-space: nowrap;
 }
 
 .navListElement:hover {
@@ -42,20 +49,20 @@ nav {
 
 .response {
   color: #001a52;
-  margin-top: 2%;
-  margin-left: 20%;
-  width: 60%;
-  height: 77%;
+  margin: 2% auto;
+  width: 90%;
+  max-width: 1200px;
   text-align: center;
-  justify-content: center;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
 ul.profile-list {
   border-top: 1px solid #001a52;
-  margin-left: 10%;
-  width: 80%;
-  float: left;
-  padding: 50px 0 0;
+  margin: 0 auto;
+  width: 100%;
+  padding: 20px 0;
+  box-sizing: border-box;
 }
 
 .profile-list {
@@ -64,27 +71,39 @@ ul.profile-list {
 
 ul {
   list-style: none;
-  gap: 3rem;
-  display: flex;
+  gap: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 480px));
   justify-content: center;
-  flex-flow: row wrap;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
 .profile-list .item:nth-child(2n+1) {
-  clear: left;
+  clear: none;
 }
 
 .profile-list .memberContainer {
   display: flex;
-  width: 500px;
+  align-items: center;
+  width: 100%;
+  max-width: 480px;
+  min-width: 280px;
+  height: 150px;
   position: relative;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-sizing: border-box;
 }
 
 .profile-list .item .memberContainer::before {
   background-color: #0033a0;
+  border-radius: 8px;
   color: #fff;
-  content: "";
-  content: counter(item) "";
+  content: counter(item);
   counter-increment: item;
   padding: 9px 0;
   font-size: 14px;
@@ -99,14 +118,39 @@ ul {
 }
 
 .smallDetails {
-  width: auto;
-  padding-left: 2rem;
+  width: calc(100% - 70px);
+  padding-left: 0.8rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  overflow: hidden;
+  font-size: 14px;
 }
 
-.smallDetails *{
-  margin-bottom: -10px;
+.smallDetails * {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.smallDetails .fullname {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.memberPhoto {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.memberPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .smallDetails a {
@@ -120,122 +164,150 @@ ul {
 
 .fullname {
   color: #b45200;
+  font-weight: 600;
 }
 
 h1 {
   text-align: center;
   color: #001a52;
   font-weight: 100;
+  font-size: clamp(24px, 4vw, 36px);
+  margin: 20px 0;
 }
 
 section {
   color: #001a52;
   display: flex;
   margin: 5%;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .personDetails {
-  width: 50%;
+  width: 100%;
+  min-width: 300px;
+  flex: 1;
 }
 
 .line {
   height: 3px;
-  margin: 4% 30%;
-  width: 40%;
+  margin: 20px auto;
+  width: 60%;
+  max-width: 200px;
   background-color: #1A4DBA;
 }
 
 .personHeader {
   color: #001a52;
-  font-size: 2.5rem;
+  font-size: clamp(20px, 4vw, 32px);
   font-weight: 400;
-  margin-bottom: 50px;
-  padding-left: 6%;
+  margin-bottom: 30px;
+  padding: 0 4%;
   margin-top: 5%;
 }
 
 .personInfo {
-  font-size: 1.2rem;
+  font-size: clamp(16px, 2.5vw, 18px);
   font-weight: 300;
   padding: 0 4%;
+  line-height: 1.5;
 }
 
 .election {
   display: flex;
   flex-direction: column;
-  padding-left: 4%;
+  padding: 0 4%;
   margin-bottom: 6%;
-  font-size: 1.2rem;
+  font-size: clamp(16px, 2.5vw, 18px);
+  gap: 8px;
 }
 
-.election *{
-  margin-bottom: -10px;
+.election * {
+  margin: 0;
 }
 
 .emailPhoto {
   display: flex;
   flex-direction: column;
-  padding-left: 4%;
+  padding: 0 4%;
   margin-bottom: 6%;
-  font-size: 1.2rem;
+  font-size: clamp(16px, 2.5vw, 18px);
+  gap: 8px;
 }
 
 .emailPhoto * {
-  margin-bottom: -10px;
+  margin: 0;
 }
 
 .bio {
   margin-left: 4%;
+  padding-right: 4%;
 }
 
 .personPhoto {
   text-align: center;
-  width: 50%;
+  width: 100%;
+  min-width: 200px;
+  flex: 1;
+  margin-top: 20px;
+}
+
+.personPhoto img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
 
 details {
-  font-size: 1.2rem;
+  font-size: clamp(16px, 2.5vw, 18px);
 }
 
 .searches {
-  padding-top: -5%;
-  width: 30%;
-  height: 71%;
-  margin-left: 35%;
+  width: 90%;
+  max-width: 500px;
+  margin: 20px auto;
   border-top: 1px solid #001a52;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 20px 0;
 }
 
 .forms {
-  font-size: 1.2rem;
+  font-size: clamp(16px, 2.5vw, 18px);
   color: #001a52;
-  padding: 5% 20%;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  height: 20%;
-  margin: 5%;
+  gap: 15px;
+  margin: 10px;
   border-radius: 20px;
   box-shadow: -10px -10px 15px rgba(255,255,255,0.5),
             10px 10px 15px rgba(70,70,70,0.12);
   text-align: center;
+  box-sizing: border-box;
 }
 
 .input {
   border: none;
   border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
 }
 
 .button {
-  width: 60%;
-  margin-left: 20%;
+  width: 80%;
+  max-width: 200px;
+  margin: 0 auto;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   background-color: #0033a0;
   color: white;
-  font-size: 1.2rem;
+  font-size: clamp(16px, 2.5vw, 18px);
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .speechComment {
@@ -243,45 +315,57 @@ details {
   display: flex;
   justify-content: space-between;
   color: #001a52;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .commentsContainer {
-  margin: 0 10%;
+  margin: 0 5%;
 }
 
 .comments h2 {
-  font-size: 2rem;
+  font-size: clamp(20px, 3vw, 28px);
   font-weight: 400;
 }
 
 .commentsForm {
-  height: 100px;
+  min-height: 100px;
   width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
 .commentsInput {
   border: none;
-  height: 30px;
+  min-height: 30px;
+  padding: 10px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
 }
 
 .commentsBtn {
   background-color: #0033a0;
   color: #fff;
-  height: 30px;
-  width: 60%;
-  margin-left: 20%;
+  height: 40px;
+  width: 80%;
+  max-width: 200px;
+  margin: 0 auto;
   border: none;
   cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
 .speech {
-  width: 50%;
+  width: 100%;
+  min-width: 280px;
+  flex: 1;
 }
 
 .speech h2 {
-  font-size: 2rem;
+  font-size: clamp(20px, 3vw, 28px);
   font-weight: 400;
 }
 
@@ -289,11 +373,161 @@ footer {
   background-color: #0033a0;
   color: #fff;
   position: relative;
-  margin-top: 10px;
+  margin-top: 40px;
   width: 100%;
-  height: 90px;
+  min-height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow-y: hidden;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    min-height: auto;
+  }
+  
+  .logo {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .navList {
+    width: 100%;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .response {
+    width: 95%;
+    margin: 10px auto;
+    padding: 0 5px;
+  }
+  
+  ul {
+    gap: 0.8rem;
+    padding: 0 10px;
+    grid-template-columns: 1fr;
+  }
+  
+  .profile-list .memberContainer {
+    min-width: auto;
+    width: calc(100% - 10px);
+    padding: 8px;
+    margin: 0 5px;
+    height: 90px;
+  }
+  
+  .smallDetails {
+    font-size: 13px;
+    padding-left: 0.6rem;
+    width: calc(100% - 60px);
+  }
+  
+  .smallDetails * {
+    font-size: 13px;
+  }
+  
+  .smallDetails .fullname {
+    font-size: 14px;
+  }
+  
+  .memberPhoto {
+    width: 50px;
+    height: 50px;
+  }
+  
+  section {
+    flex-direction: column;
+    margin: 2%;
+  }
+  
+  .personDetails, .personPhoto {
+    width: 100%;
+  }
+  
+  .speechComment {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .speech {
+    width: 100%;
+  }
+  
+  .searches {
+    width: 95%;
+  }
+  
+  .forms {
+    padding: 15px;
+    margin: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navListElement {
+    font-size: 14px;
+    padding: 5px;
+  }
+  
+  .response {
+    width: 100%;
+    padding: 0 10px;
+  }
+  
+  ul {
+    gap: 0.6rem;
+    padding: 0 5px;
+  }
+  
+  .profile-list .memberContainer {
+    min-width: auto;
+    width: calc(100% - 6px);
+    padding: 6px;
+    margin: 0 3px;
+    height: 120px;
+  }
+  
+  .smallDetails {
+    padding-left: 0.4rem;
+    font-size: 12px;
+    width: calc(100% - 50px);
+  }
+  
+  .smallDetails * {
+    font-size: 12px;
+  }
+  
+  .smallDetails .fullname {
+    font-size: 13px;
+  }
+  
+  .memberPhoto {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .personHeader {
+    padding: 0 2%;
+  }
+  
+  .personInfo, .election, .emailPhoto {
+    padding: 0 2%;
+  }
+  
+  .bio {
+    margin-left: 2%;
+    padding-right: 2%;
+  }
+  
+  .commentsContainer {
+    margin: 0 2%;
+  }
 }
